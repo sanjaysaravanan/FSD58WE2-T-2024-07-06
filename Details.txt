@@ -1,0 +1,189 @@
+
+Recap:
+  1. Working with array lists
+    List Rendering 
+      Usage of key is a must
+
+  2. Conditional rendering
+
+    Conditionally change the UI Design
+
+    {/* Conditional Rendering changing the style using ? operator */}
+    {/* Method 1 changing the style using ? operator */}
+    <h2 style={{ textDecoration: isPassedOut ? "line-through" : "none" }}>
+      {name}
+    </h2>
+
+    {/* Method 2 using the ? operator directly on the tag */}
+    {isPassedOut ? (
+      <h2 style={{ textDecoration: "line-through" }}>{name}</h2>
+    ) : (
+      <h2>{name}</h2>
+    )}
+
+    {/* Method 3 using && */}
+    {isPassedOut && (
+      <h2 style={{ textDecoration: "line-through" }}>{name}</h2>
+    )}
+    {!isPassedOut && <h2>{name}</h2>}
+
+Topics:
+
+  Module CSS - Avoid the burden priority of  the CSS getting applied
+
+  using module css we can unique classnames for each module css
+
+  Importance of Keys in VDOM while doing list rendering:
+    key - helps in providing  unique identifiers to component while list rendering used by the VDOM to identify a particulat component while rendering
+  
+    It is very important when we do CRUD operations:
+
+    ** Do not use array index as key while list rendering ** 
+    because when we remove elements from the middle it will change the index according result in changeing the key
+
+    inturn confusing the VDOM
+
+
+      Example:
+        todo list
+          1. Run
+          2. Sleep
+          3. Eat
+          4. Code
+
+  0. props:
+      attributes passed for a component is called as prop
+      which can be used inside the props / destructured at component level
+
+      the essential information needed to create a component for displaying the information
+
+      props validation:
+
+        specifying the type of the data for each props of a component is called prop validation
+
+      proptypes:
+        specifying the type of the props values needed to create a component
+        this helps in reducing unwanted errors because of typeerror  
+
+      List of Students Component Design:
+
+        Student:
+          props:
+            1. image - string
+            2. name - string
+            3. duration - { startDate, endDate }
+
+  0.01: Event handling refer the Event-Handling Component
+
+  0.1: JS Memory & VDOM rendering in react & in HTML
+
+    ** do not use the document object inside react, expect for very few eventlistening, even for that use window object instead **
+
+  1. Hooks:
+
+    Hooks are hooking/coupled setup between the DOM rendering & JS memory
+
+    This will listten to the JS & DOM changes, whenever a State Variable value in the Hook changes, this will cause a re-rendering of the DOM
+  
+    State Hook --> is value in the rendered JSX that changes during any events
+      
+      Pimary in React:
+
+        ****** Do Not Touch Document Object in React ******
+
+        it is CRIME if You do so
+
+      1. Initial JS memory Load and rendering
+          JS Memory will get modified by the function or actions
+
+          But the re-rendering will not happen, this prevents the JS memory from getting into JSX UI
+
+      2. re-rendering
+          Latest JS Memeory Values gets loaded on to the HTML DOM
+      
+      rendering & re-rendering parts of react
+
+        Normal JSX Syntax will render only once without any state hooks
+
+      Hooks:
+        Hooking setup between the memory of the JS and JSX Element
+
+        when a memory of JS changes( Hook memory value ), JSX automatically re-renders
+
+      State Hook:
+        holds a value which will change during events/interactions
+        a change in the value will cause re-render and update the value in the client-side html
+
+        dispatch function to change the value of state variable is async in nature
+
+      ** Do Not Try to access the updated value immediately after State Dispatch **
+
+  2. Stateful & Stateless component 
+
+      Stateful component is component which has a state variable
+
+      Stateless -> Component which does not have a state value rather have only static values
+
+      Props vs State  (Common Interview Question)
+        Props ---> static values passed during rendering
+        State --> a value change which causing the re-rendering
+
+        <Counter initialValue={99} />
+          initialValue --> Prop Passed While usingg the component somewhere
+
+          where * count * is a state variable 
+
+Next Session:
+
+  3. Reusable Components:
+      Trying to re-reuse the parts of the UI elements
+
+      Always look for commanalities in the design and write resusable components with same props
+
+  4. Component Life Cycle:
+
+      Initialization: JS Loads the JSX into the memory
+
+      Mounting: JSX gets loaded into the RealDOM
+
+      Updating: Some contents or state gets updated in the Component JSX
+
+      Unmounting: Removing the element from the RealDOM
+
+  5. Life Cycle Hook - useEffect
+
+      We are gonna target each of the phases and we are going to do something those phases( Mounting, Updating, Unmounting )
+
+      Mounted: useEffect with Mounted
+        Examples: Calculating initial value or loading some data from APIs
+    
+      Updated: Liking a particular product / post in instagram
+
+      Unmounting: Deleting a product from Cart
+
+  6. Passing Data from Parent to Child Component
+      passing the data from parent to child in the props ( child props )
+     Passing Data from child to parent
+      passing function as prop to the child
+
+Task:
+  Please complete one of the following,
+
+  Day 21: React Shopping Cart Task
+
+    Just Complete the UI by referring the component/concepts discussed 
+
+    https://docs.google.com/document/d/1mqZqoxmPlEioKCwVfuOYIUcG2kESrYuocrYO4h9kiRk/edit
+
+    Please refer the Students Component for more ideas
+
+      Step 1:
+        Create Sample Data as per the UI ( https://startbootstrap.com/previews/shop-homepage#google_vignette )
+      
+      Step 2:
+        use the data build the Product & Products Lising
+
+        like Teacher & Teachers components
+
+    Note: ** Create only the UI & Tomorrow will discuss on the interactions like addToCart & removeFromCart **
+
